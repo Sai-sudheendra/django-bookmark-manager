@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Delete Bookmark</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 30px;
+      width: 420px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .card h2 {
+      color: #d32f2f;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .bookmark-title {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn-danger {
+      background: #d32f2f;
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      background: #b71c1c;
+    }
+
+    .btn-secondary {
+      background: #e0e0e0;
+      color: #333;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-secondary:hover {
+      background: #cfcfcf;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Delete Bookmark</h2>
+    <p>
+      Are you sure you want to delete  
+      <span class="bookmark-title">"{{ bookmark.title }}"</span>?
+    </p>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="actions">
+        <a href="{% url 'bookmark_list' %}" class="btn btn-secondary">
+          Cancel
+        </a>
+        <button type="submit" class="btn btn-danger">
+          Delete
+        </button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
